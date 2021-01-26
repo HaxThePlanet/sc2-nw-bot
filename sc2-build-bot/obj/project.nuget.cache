@@ -1,13 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "hcLwSMju7qWsXy0//Q0k6T42BQnp8pxvYrW4KiWQRQ7ZYAcA5RiiEkUp8//9Osuhtq8hYuw58A57RwbAroAdPA==",
+  "dgSpecHash": "hT4KenHB4MXw1oimDQyv5WK4Yfj/hqa8khBg7fK3G2Lq2evv26nRREI4NwlC2Fq6W4rJvqZxTVMx+0Kc1tsQtQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\bob\\documents\\code\\sc2-build-bot\\sc2-build-bot\\sc2-build-bot.vbproj",
+  "projectFilePath": "C:\\Users\\commo\\Documents\\code\\sc2\\sc2-nw-bot\\sc2-build-bot\\sc2-build-bot.vbproj",
   "expectedPackageFiles": [
-    "C:\\Users\\bob\\.nuget\\packages\\ironocr\\2020.12.2\\ironocr.2020.12.2.nupkg.sha512",
-    "C:\\Users\\bob\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
-    "C:\\Users\\bob\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
-    "C:\\Users\\bob\\.nuget\\packages\\system.drawing.common\\4.7.0\\system.drawing.common.4.7.0.nupkg.sha512"
+    "C:\\Users\\commo\\.nuget\\packages\\ironocr\\2020.12.2\\ironocr.2020.12.2.nupkg.sha512",
+    "C:\\Users\\commo\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
+    "C:\\Users\\commo\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\commo\\.nuget\\packages\\system.drawing.common\\4.7.0\\system.drawing.common.4.7.0.nupkg.sha512"
   ],
   "logs": []
 }

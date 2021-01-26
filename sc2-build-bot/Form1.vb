@@ -68,7 +68,7 @@
         MoveToNextBuildPosition()
         MakeUnit("V", "R")
 
-        '10 unit, next row
+        '10 unit, infestor
         waitForMinerals(150)
         MoveToNextBuildPosition()
         MakeUnit("V", "R")
@@ -81,7 +81,7 @@
         If onUnit = 0 Then
             onUnit += 1
             MoveToNexus()
-            BlinkSCV(959, 390)
+            BlinkSCV(1825, 390)
 
             Return
         End If
@@ -89,7 +89,7 @@
         If onUnit = 1 Then
             onUnit += 1
             MoveToNexus()
-            BlinkSCV(1081, 390)
+            BlinkSCV(1700, 390)
 
             Return
         End If
@@ -97,7 +97,7 @@
         If onUnit = 2 Then
             onUnit += 1
             MoveToNexus()
-            BlinkSCV(1203, 390)
+            BlinkSCV(1575, 390)
 
             Return
         End If
@@ -105,7 +105,7 @@
         If onUnit = 3 Then
             onUnit += 1
             MoveToNexus()
-            BlinkSCV(1325, 390)
+            BlinkSCV(1450, 390)
 
             Return
         End If
@@ -113,28 +113,28 @@
         If onUnit = 4 Then
             onUnit += 1
             MoveToNexus()
-            BlinkSCV(1450, 390)
+            BlinkSCV(1325, 390)
             Return
         End If
 
         If onUnit = 5 Then
             onUnit += 1
             MoveToNexus()
-            BlinkSCV(1575, 390)
+            BlinkSCV(1203, 390)
             Return
         End If
 
         If onUnit = 6 Then
             onUnit += 1
             MoveToNexus()
-            BlinkSCV(1700, 390)
+            BlinkSCV(1081, 390)
             Return
         End If
 
         If onUnit = 7 Then
             onUnit += 1
             MoveToNexus()
-            BlinkSCV(1825, 390)
+            BlinkSCV(959, 390)
             Return
         End If
 
