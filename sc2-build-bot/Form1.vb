@@ -16,40 +16,47 @@
         'start off at nexus
         MoveToNexus()
 
-        '1 make first unit = sentry
+        '0 make first unit = sentry
         BlinkSCV(838, 390)
         MakeUnit("B", "W")
 
-        '2 make second unit
+        '1 make second unit
         waitForMinerals(50)
         MoveToNextBuildPosition()
         MakeUnit("B", "W")
 
-        '3 make ling
+        '2 make ling
         waitForMinerals(50)
         MoveToNextBuildPosition()
         MakeUnit("V", "Q")
 
-        '4 make roach
+        '3 make roach
         waitForMinerals(75)
         MoveToNextBuildPosition()
         MakeUnit("V", "A")
 
-        '5 make raveger27
+        '4 make raveger
         waitForMinerals(150)
         MoveToNextBuildPosition()
         MakeUnit("V", "T")
 
-        '6 make raveger
+        '5 make raveger
         waitForMinerals(150)
         MoveToNextBuildPosition()
         MakeUnit("V", "T")
 
+
+        '6 make infestor
+        waitForMinerals(150)
+        MoveToNextBuildPosition()
+        MakeUnit("V", "R")
 
         '7 make infestor
         waitForMinerals(150)
         MoveToNextBuildPosition()
         MakeUnit("V", "R")
+
+        'NEXT ROW
 
         '8 make infestor
         waitForMinerals(150)
@@ -61,7 +68,7 @@
         MoveToNextBuildPosition()
         MakeUnit("V", "R")
 
-        '10 make infestor
+        '10 unit, next row
         waitForMinerals(150)
         MoveToNextBuildPosition()
         MakeUnit("V", "R")
@@ -131,17 +138,26 @@
             Return
         End If
 
+        '2nd row
+
         If onUnit = 8 Then
             onUnit += 1
             MoveToNexus()
-            BlinkSCV(1950, 390)
+            BlinkSCV(1089, 498)
             Return
         End If
 
         If onUnit = 9 Then
             onUnit += 1
             MoveToNexus()
-            BlinkSCV(2075, 390)
+            BlinkSCV(1214, 500)
+            Return
+        End If
+
+        If onUnit = 10 Then
+            onUnit += 1
+            MoveToNexus()
+            BlinkSCV(1342, 501)
             Return
         End If
 
@@ -155,32 +171,18 @@
 TryAgain:
         ResponsiveSleep(1000)
 
+        Dim minerals As Integer = OcrScreen()
 
-        Dim minerals As String = OcrScreen()
-        Dim intMins As Integer = 0
+        'probably.
+        If minerals >= count Then
+            WriteMessageToGlobalChat("we have " & minerals & " mineral(s) needed, exiting wait")
+            MoveToScv()
 
-        Try
-            intMins = Integer.Parse(minerals)
-        Catch
-            WriteMessageToGlobalChat("error ocring minerals")
-            GoTo TryAgain
-        End Try
-
-
-        'we have good minerals ocr?
-        If Information.IsNumeric(minerals) Then
-            'probably.
-            If intMins >= count Then
-                WriteMessageToGlobalChat("we have " & minerals & " mineral(s) needed, exiting wait")
-                MoveToScv()
-
-                Exit Function
-            End If
+            Exit Function
         Else
-            WriteMessageToGlobalChat("still waiting for minerals")
-            ResponsiveSleep(3000)
-            'nope, keep trying till we get a good mineral ocr
-            waitForMinerals(count)
+            'start again
+            GoTo TryAgain
         End If
+
     End Function
 End Class

@@ -84,10 +84,12 @@ Module Utility
     End Sub
 
 
-    Public Function OcrScreen() As String
+    Public Function OcrScreen() As Integer
+        Dim convertedResult As Integer
+
         'take screen        
-        'TakeAreaScreenshot("processme.tiff", 120, 60, 1520, 0, 0, 0)
-        TakeAreaScreenshot("processme.tiff", 98, 60, 1520, 0, 0, 0)
+        'TakeAreaScreenshot("processme.tiff", 80, 60, 1490, 0, 0, 0)
+        TakeAreaScreenshot("processme.tiff", 80, 60, 1490, 0, 0, 0)
 
         Dim Result As String = (New IronTesseract()).Read("processme.tiff").Text
         Result = LTrim(RTrim(Result.Replace("=", "")))
@@ -95,12 +97,12 @@ Module Utility
         WriteMessageToGlobalChat("Minerals:" & Result)
 
         'if no result call again
-        If Result.All(AddressOf Char.IsDigit) = False Or Result = "" Or Result = Nothing Or Result = "0" Then
+        If Integer.TryParse(Result, convertedResult) = False Then
             ResponsiveSleep(1000)
             OcrScreen()
         End If
 
-        Return Result
+        Return convertedResult
     End Function
 
     Public Sub TakeScreenShotAreaRec(file As String, width As Integer, height As Integer, sourceX As Integer, sourceY As Integer, destinationX As Integer, destinationY As Integer)
