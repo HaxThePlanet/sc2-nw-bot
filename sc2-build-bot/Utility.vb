@@ -121,7 +121,7 @@ Module Utility
 
         Dim convertedResultString As String
         Dim eachSize = 50
-        Dim maxMineralOcr As Integer = 10000 'set lower if u want
+        Dim maxMineralOcr As Integer = 300 'set lower if u want
         Dim Result As IronOcr.OcrResult
         Dim finalOcrText As String = ""
 
