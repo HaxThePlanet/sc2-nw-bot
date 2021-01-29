@@ -93,14 +93,14 @@ Module Utility
         Return New Bitmap(InputBitmap, New Size(width, height))
     End Function
 
-    Public Function MagifyImage(filename As String) As String
+    Public Function MagifyImage(filename As String)
         'cleans up ocr
         WriteMessageToGlobalChat("cleaning up image with magisk...")
 
         'convert 59.tif -negate  -black-threshold 20% -white-threshold 20% -border 5 -bordercolor white 59_out.tif
 
         Dim p As New Process
-        Dim psi As New ProcessStartInfo("C:\Program Files\ImageMagick-7.0.10-Q16-HDRI\convert.exe", filename & " -border 5 -bordercolor white output.tiff")
+        Dim psi As New ProcessStartInfo("C:\Program Files\ImageMagick-7.0.10-Q16-HDRI\convert.exe", filename & " -border 1 -bordercolor white processme.tiff")
         psi.WindowStyle = ProcessWindowStyle.Hidden
         psi.CreateNoWindow = True
         p.StartInfo = psi
@@ -108,8 +108,6 @@ Module Utility
         p.WaitForExit()
 
         WriteMessageToGlobalChat("done cleaning up image with magisk!")
-
-        Return "output.tiff"
     End Function
     Public Function OcrScreen() As Integer
         Dim convertedResult As Integer
@@ -128,7 +126,7 @@ Module Utility
         Dim finalOcrText As String = ""
 
         'cleanup ocr
-        'Dim processedFile As String = MagifyImage("processme.tiff")
+        'MagifyImage("processme.tiff")
 
         Do
             'test rig for number test
@@ -143,8 +141,8 @@ Module Utility
             Using Input = New OcrInput()
                 Input.AddImage("processed.tif")
                 Input.Sharpen() 'excellent
-                'Input.Invert() 'excellent       
-                'Input.ToGrayScale()
+                Input.Invert() 'excellent       
+                Input.ToGrayScale()
                 Input.DeNoise() 'fixes digital noise                       
 
                 'Input.Erode()
