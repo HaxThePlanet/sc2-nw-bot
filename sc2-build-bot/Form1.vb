@@ -9,7 +9,7 @@
         'test jig
         'Do
         '    OcrScreen()
-        '    ResponsiveSleep(1000)
+        '    ResponsiveSleep(5000)
         'Loop
 
         MoveToScv()

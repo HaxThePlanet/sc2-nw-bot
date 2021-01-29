@@ -93,15 +93,20 @@ Module Utility
         Return New Bitmap(InputBitmap, New Size(width, height))
     End Function
 
-    Public Function MagifyImage(filename As String)
+    Public Function OcrCleanupMagick(filename As String)
         'cleans up ocr
         WriteMessageToGlobalChat("cleaning up image with magisk...")
 
-        'convert 59.tif -negate  -black-threshold 20% -white-threshold 20% -border 5 -bordercolor white 59_out.tif
+        'first try
+        'convert 59.tif -negate -black-threshold 20% -white-threshold 20% -border 5 -bordercolor white 59_out.tif
+
+        'second try
+        '-border 2 -bordercolor white
 
         Dim p As New Process
-        Dim psi As New ProcessStartInfo("C:\Program Files\ImageMagick-7.0.10-Q16-HDRI\convert.exe", filename & " -border 1 -bordercolor white processme.tiff")
+        Dim psi As New ProcessStartInfo("C:\Program Files\ImageMagick-7.0.10-Q16-HDRI\convert.exe", filename & " -border 2 -bordercolor white processme.tiff")
         psi.WindowStyle = ProcessWindowStyle.Hidden
+        psi.WorkingDirectory = "C:\Users\bob\Documents\code\sc2-build-bot\sc2-build-bot\bin\Debug\net5.0-windows"
         psi.CreateNoWindow = True
         p.StartInfo = psi
         p.Start()
@@ -113,8 +118,9 @@ Module Utility
         Dim convertedResult As Integer
 
         'take screen        
-        '1080
-        TakeAreaScreenshot("processme.tiff", 50, 45, 1525, 0, 0, 0)
+        '1080, sometimes it moves?!
+        'TakeAreaScreenshot("processme.tiff", 50, 45, 1490, 0, 0, 0)
+        TakeAreaScreenshot("processme.tiff", 50, 45, 1520, 0, 0, 0)
 
         '4K
         'TakeAreaScreenshot("processme.tiff", 100, 100, 3050, 0, 0, 0)
@@ -126,11 +132,11 @@ Module Utility
         Dim finalOcrText As String = ""
 
         'cleanup ocr
-        'MagifyImage("processme.tiff")
+        OcrCleanupMagick("processme.tiff")
 
         Do
             'test rig for number test
-            'Dim inputImage As New Bitmap("C:\Users\bob\Desktop\59_out.tif")
+            'Dim inputImage As New Bitmap("C:\Users\bob\Desktop\process_real_done.tiff")
             Dim inputImage As New Bitmap("processme.tiff")
             Dim outputImage As New Bitmap(ResizeImage(inputImage, eachSize, eachSize))
             outputImage.Save("processed.tif")
@@ -153,6 +159,9 @@ Module Utility
                 Result = Ocr.Read(Input)
                 finalOcrText = LTrim(RTrim(Result.Text.Replace("=", "")))
 
+                If finalOcrText.Equals("52") Then
+                    Debug.Print("")
+                End If
             End Using
             inputImage.Dispose()
 
@@ -191,7 +200,7 @@ Module Utility
 
         'if no result call again
         If Integer.TryParse(finalOcrText, convertedResult) = False Then
-            ResponsiveSleep(100)
+            ResponsiveSleep(1000)
             OcrScreen()
         End If
 
