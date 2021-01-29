@@ -74,12 +74,40 @@
         MoveToNextBuildPosition()
         MakeUnit("V", "R")
 
-        '10 unit, infestor
-        waitForMinerals(150)
+        '10 unit, hydra
+        waitForMinerals(100)
         MoveToNextBuildPosition()
-        MakeUnit("V", "R")
+        MakeUnit("V", "S")
 
+        '11 unit, muta
+        waitForMinerals(100)
+        MoveToNextBuildPosition()
+        MakeUnit("V", "Z")
 
+        '12 unit, viper
+        waitForMinerals(200)
+        MoveToNextBuildPosition()
+        MakeUnit("V", "G")
+
+        '13 unit, viper
+        waitForMinerals(200)
+        MoveToNextBuildPosition()
+        MakeUnit("V", "G")
+
+        '14 unit, viper
+        waitForMinerals(200)
+        MoveToNextBuildPosition()
+        MakeUnit("V", "G")
+
+        '15 unit, viper
+        waitForMinerals(200)
+        MoveToNextBuildPosition()
+        MakeUnit("V", "G")
+
+        'done!
+        ResponsiveSleep(2000)
+
+        'NEXT ROW
     End Sub
 
     Dim onUnit As Integer = 0
@@ -167,6 +195,40 @@
             Return
         End If
 
+        If onUnit = 11 Then
+            onUnit += 1
+            MoveToNexus()
+            BlinkSCV(1467, 501)
+            Return
+        End If
+
+        If onUnit = 12 Then
+            onUnit += 1
+            MoveToNexus()
+            BlinkSCV(1592, 501)
+            Return
+        End If
+
+        If onUnit = 13 Then
+            onUnit += 1
+            MoveToNexus()
+            BlinkSCV(1717, 501)
+            Return
+        End If
+
+        If onUnit = 14 Then
+            onUnit += 1
+            MoveToNexus()
+            BlinkSCV(1842, 501)
+            Return
+        End If
+
+        If onUnit = 15 Then
+            onUnit += 1
+            MoveToNexus()
+            BlinkSCV(1967, 501)
+            Return
+        End If
 
     End Sub
 

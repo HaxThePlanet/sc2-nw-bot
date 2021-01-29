@@ -93,6 +93,7 @@ Module Utility
         Return New Bitmap(InputBitmap, New Size(width, height))
     End Function
 
+    '*****MAKE SURE YOU INSTALL IMAGE MAGICK WITH LEGACY TOOLS INSTALLED (convert.exe)
     Public Function OcrCleanupMagick(filename As String)
         'cleans up ocr
         WriteMessageToGlobalChat("cleaning up image with magisk...")
