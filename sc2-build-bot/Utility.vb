@@ -93,6 +93,24 @@ Module Utility
         Return New Bitmap(InputBitmap, New Size(width, height))
     End Function
 
+    Public Function MagifyImage(filename As String) As String
+        'cleans up ocr
+        WriteMessageToGlobalChat("cleaning up image with magisk...")
+
+        'convert 59.tif -negate  -black-threshold 20% -white-threshold 20% -border 5 -bordercolor white 59_out.tif
+
+        Dim p As New Process
+        Dim psi As New ProcessStartInfo("C:\Program Files\ImageMagick-7.0.10-Q16-HDRI\convert.exe", filename & " -border 5 -bordercolor white output.tiff")
+        psi.WindowStyle = ProcessWindowStyle.Hidden
+        psi.CreateNoWindow = True
+        p.StartInfo = psi
+        p.Start()
+        p.WaitForExit()
+
+        WriteMessageToGlobalChat("done cleaning up image with magisk!")
+
+        Return "output.tiff"
+    End Function
     Public Function OcrScreen() As Integer
         Dim convertedResult As Integer
 
@@ -105,13 +123,16 @@ Module Utility
 
         Dim convertedResultString As String
         Dim eachSize = 50
-        Dim maxMineralOcr As Integer = 300
+        Dim maxMineralOcr As Integer = 10000 'set lower if u want
         Dim Result As IronOcr.OcrResult
         Dim finalOcrText As String = ""
 
+        'cleanup ocr
+        'Dim processedFile As String = MagifyImage("processme.tiff")
+
         Do
             'test rig for number test
-            'Dim inputImage As New Bitmap("C:\Users\bob\Desktop\59.tif")
+            'Dim inputImage As New Bitmap("C:\Users\bob\Desktop\59_out.tif")
             Dim inputImage As New Bitmap("processme.tiff")
             Dim outputImage As New Bitmap(ResizeImage(inputImage, eachSize, eachSize))
             outputImage.Save("processed.tif")
@@ -122,17 +143,15 @@ Module Utility
             Using Input = New OcrInput()
                 Input.AddImage("processed.tif")
                 Input.Sharpen() 'excellent
-                Input.Invert() 'excellent       
-                Input.ToGrayScale()
-
+                'Input.Invert() 'excellent       
+                'Input.ToGrayScale()
+                Input.DeNoise() 'fixes digital noise                       
 
                 'Input.Erode()
                 'Input.EnhanceResolution(eachSize)
                 'Input.Contrast.Binarize()
                 'Input.MinimumDPI = Nothing
 
-
-                Input.DeNoise() 'fixes digital noise                       
                 Result = Ocr.Read(Input)
                 finalOcrText = LTrim(RTrim(Result.Text.Replace("=", "")))
 
@@ -146,9 +165,17 @@ Module Utility
 
             'if no result call again
             If Integer.TryParse(finalOcrText, convertedResult) Then
+                'make sure we aren't above max min reasonable result can't be fuckin 1000's 
                 If convertedResult < maxMineralOcr Then
-                    WriteMessageToGlobalChat("Found good ocr:" & finalOcrText)
-                    Exit Do
+                    'check for 0 first digit invalid
+                    Dim firstDigit As Integer = finalOcrText.ToString().Substring(0, 1)
+
+                    If firstDigit = 0 Then
+                        WriteMessageToGlobalChat("bad ocr, starting with 0 isnt possible:" & finalOcrText)
+                    Else
+                        WriteMessageToGlobalChat("Found good ocr:" & finalOcrText)
+                        Exit Do
+                    End If
                 End If
             Else
                 WriteMessageToGlobalChat("ignoring ocr number above max min ocr setting:" & finalOcrText)
