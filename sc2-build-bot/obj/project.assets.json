@@ -177,19 +177,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\commo\\.nuget\\packages\\": {}
+    "C:\\Users\\bob\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\commo\\Documents\\code\\sc2\\sc2-nw-bot\\sc2-build-bot\\sc2-build-bot.vbproj",
+      "projectUniqueName": "C:\\Users\\bob\\documents\\code\\sc2-build-bot\\sc2-build-bot\\sc2-build-bot.vbproj",
       "projectName": "sc2-build-bot",
-      "projectPath": "C:\\Users\\commo\\Documents\\code\\sc2\\sc2-nw-bot\\sc2-build-bot\\sc2-build-bot.vbproj",
-      "packagesPath": "C:\\Users\\commo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\commo\\Documents\\code\\sc2\\sc2-nw-bot\\sc2-build-bot\\obj\\",
+      "projectPath": "C:\\Users\\bob\\documents\\code\\sc2-build-bot\\sc2-build-bot\\sc2-build-bot.vbproj",
+      "packagesPath": "C:\\Users\\bob\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\bob\\documents\\code\\sc2-build-bot\\sc2-build-bot\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\commo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\bob\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

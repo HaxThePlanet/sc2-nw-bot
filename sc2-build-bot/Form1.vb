@@ -6,6 +6,12 @@
         'wait for game
         ResponsiveSleep(5000)
 
+        'test jig
+        'Do
+        '    OcrScreen()
+        '    ResponsiveSleep(1000)
+        'Loop
+
         MoveToScv()
         MoveMouseToCenter()
 
@@ -81,7 +87,7 @@
         If onUnit = 0 Then
             onUnit += 1
             MoveToNexus()
-            BlinkSCV(1700, 390)
+            BlinkSCV(1691, 400)
 
             Return
         End If
@@ -89,7 +95,7 @@
         If onUnit = 1 Then
             onUnit += 1
             MoveToNexus()
-            BlinkSCV(1575, 390)
+            BlinkSCV(1566, 400)
 
             Return
         End If
@@ -97,7 +103,7 @@
         If onUnit = 2 Then
             onUnit += 1
             MoveToNexus()
-            BlinkSCV(1450, 390)
+            BlinkSCV(1441, 400)
 
             Return
         End If
@@ -105,7 +111,7 @@
         If onUnit = 3 Then
             onUnit += 1
             MoveToNexus()
-            BlinkSCV(1325, 390)
+            BlinkSCV(1316, 400)
 
             Return
         End If
@@ -113,14 +119,14 @@
         If onUnit = 4 Then
             onUnit += 1
             MoveToNexus()
-            BlinkSCV(1203, 390)
+            BlinkSCV(1191, 400)
             Return
         End If
 
         If onUnit = 5 Then
             onUnit += 1
             MoveToNexus()
-            BlinkSCV(1081, 390)
+            BlinkSCV(1066, 400)
             Return
         End If
 
@@ -167,6 +173,8 @@
     'wait for >= mineral count param
     Function waitForMinerals(count As Integer)
         MoveToBlackTop()
+
+        MoveMouseToCenter()
 
 TryAgain:
         ResponsiveSleep(1000)

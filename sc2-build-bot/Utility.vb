@@ -10,6 +10,11 @@ Imports Constants
 Imports System.Text
 Imports Microsoft
 Imports IronOcr
+Imports NSOCR_NameSpace
+Imports Leadtools.Document.Writer
+Imports Leadtools.Codecs
+Imports Leadtools.Ocr
+Imports Leadtools
 
 Module Utility
     <DllImport("user32.dll", CharSet:=CharSet.Unicode)>
@@ -51,6 +56,8 @@ Module Utility
     Dim lastGlobalWidth As Integer = -1
     Dim highestProb As Integer = -1
     Dim lastObjectCenterline
+
+    Private languages() As String
     Public Sub MakeUnit(firstKey As String, secondKey As String)
         My.Computer.Keyboard.SendKeys(Keys.Escape, False)
         My.Computer.Keyboard.SendKeys(firstKey, True)
@@ -82,23 +89,84 @@ Module Utility
     Public Sub MoveMouseToCenter()
         SetCursorPos(960, 540)
     End Sub
-
+    Public Function ResizeImage(ByVal InputBitmap As Bitmap, width As Integer, height As Integer) As Bitmap
+        Return New Bitmap(InputBitmap, New Size(width, height))
+    End Function
 
     Public Function OcrScreen() As Integer
         Dim convertedResult As Integer
 
         'take screen        
-        'TakeAreaScreenshot("processme.tiff", 80, 60, 1490, 0, 0, 0)
-        TakeAreaScreenshot("processme.tiff", 80, 60, 1490, 0, 0, 0)
+        '1080
+        TakeAreaScreenshot("processme.tiff", 50, 45, 1525, 0, 0, 0)
 
-        Dim Result As String = (New IronTesseract()).Read("processme.tiff").Text
-        Result = LTrim(RTrim(Result.Replace("=", "")))
+        '4K
+        'TakeAreaScreenshot("processme.tiff", 100, 100, 3050, 0, 0, 0)
 
-        WriteMessageToGlobalChat("Minerals:" & Result)
+        Dim convertedResultString As String
+        Dim eachSize = 50
+        Dim maxMineralOcr As Integer = 300
+        Dim Result As IronOcr.OcrResult
+        Dim finalOcrText As String = ""
+
+        Do
+            'test rig for number test
+            'Dim inputImage As New Bitmap("C:\Users\bob\Desktop\59.tif")
+            Dim inputImage As New Bitmap("processme.tiff")
+            Dim outputImage As New Bitmap(ResizeImage(inputImage, eachSize, eachSize))
+            outputImage.Save("processed.tif")
+            outputImage.Dispose()
+            inputImage.Dispose()
+
+            Dim Ocr = New IronTesseract()
+            Using Input = New OcrInput()
+                Input.AddImage("processed.tif")
+                Input.Sharpen() 'excellent
+                Input.Invert() 'excellent       
+                Input.ToGrayScale()
+
+
+                'Input.Erode()
+                'Input.EnhanceResolution(eachSize)
+                'Input.Contrast.Binarize()
+                'Input.MinimumDPI = Nothing
+
+
+                Input.DeNoise() 'fixes digital noise                       
+                Result = Ocr.Read(Input)
+                finalOcrText = LTrim(RTrim(Result.Text.Replace("=", "")))
+
+            End Using
+            inputImage.Dispose()
+
+            WriteMessageToGlobalChat("Using img size " & eachSize & " Read from ocr: " & finalOcrText)
+
+            'bump size until we get a rec
+            eachSize += 50
+
+            'if no result call again
+            If Integer.TryParse(finalOcrText, convertedResult) Then
+                If convertedResult < maxMineralOcr Then
+                    WriteMessageToGlobalChat("Found good ocr:" & finalOcrText)
+                    Exit Do
+                End If
+            Else
+                WriteMessageToGlobalChat("ignoring ocr number above max min ocr setting:" & finalOcrText)
+            End If
+
+            'max img size
+            If eachSize >= 1000 Then
+                WriteMessageToGlobalChat("Did not find good ocr")
+                Exit Do
+            End If
+        Loop
+
+        'log it
+        WriteMessageToGlobalChat("Minerals:" & finalOcrText)
 
         'if no result call again
-        If Integer.TryParse(Result, convertedResult) = False Then
-            ResponsiveSleep(1000)
+        If Integer.TryParse(finalOcrText, convertedResult) = False Then
+            ResponsiveSleep(100)
             OcrScreen()
         End If
 
@@ -487,7 +555,7 @@ waitagain:
         Dim printscreen As Bitmap = New Bitmap(width, height)
         Dim graphics As Graphics = Graphics.FromImage(CType(printscreen, Image))
         graphics.CopyFromScreen(sourceX, sourceY, destinationX, destinationY, printscreen.Size)
-        printscreen.Save(file, ImageFormat.Png)
+        printscreen.Save(file, ImageFormat.Tiff)
 
 waitagain:
         If IsFileUnavailable(file) Then
@@ -561,8 +629,6 @@ waitagain:
         'file is not locked
         Return False
     End Function
-
-
     Public Sub ResponsiveSleep(ByRef iMilliSeconds As Integer)
         Dim i As Integer, iHalfSeconds As Integer = iMilliSeconds / 50
         For i = 1 To iHalfSeconds
@@ -584,36 +650,6 @@ waitagain:
             End If
         Next
 
-    End Function
-
-    Public Sub ResizeImageOnDisk(path As String)
-        Dim strFileName = System.IO.Path.GetFileName(path)
-        Try
-            Dim original As Image = Image.FromFile(path)
-            Dim resized As Image = ResizeImage(original, New Size(800, 800))
-            Dim memStream As MemoryStream = New MemoryStream()
-            resized.Save(memStream, ImageFormat.Jpeg)
-
-            Dim file As New FileStream(path, FileMode.Create, FileAccess.Write)
-
-            memStream.WriteTo(file)
-            file.Close()
-            memStream.Close()
-        Catch ex As Exception
-        End Try
-
-    End Sub
-
-    Public Function ResizeImage(img As Image, size As Size) As Image
-        Return ResizeImage(img, size.Width, size.Height)
-    End Function
-
-    Public Function ResizeImage(bmp As Bitmap, width As Integer, height As Integer) As Image
-        Return ResizeImage(DirectCast(bmp, Image), width, height)
-    End Function
-
-    Public Function ResizeImage(bmp As Bitmap, size As Size) As Image
-        Return ResizeImage(DirectCast(bmp, Image), size.Width, size.Height)
     End Function
 
     Public Function fastCompareImages(path1 As String, path2 As String) As Double

@@ -8,7 +8,18 @@
     ".NETCoreApp,Version=v5.0": {
       "sc2-build-bot/1.0.0": {
         "dependencies": {
-          "IronOcr": "2020.12.2"
+          "IronOcr": "2020.12.2",
+          "Leadtools.Codecs": "21.0.4.0",
+          "Leadtools.Codecs.Png": "21.0.4.0",
+          "Leadtools.Codecs.Tif": "21.0.4.0",
+          "Leadtools.Codecs.Txt": "21.0.4.0",
+          "Leadtools": "21.0.4.0",
+          "Leadtools.Document.Writer": "21.0.4.0",
+          "Leadtools.Ocr": "21.0.4.0",
+          "Leadtools.Ocr.LEADEngine": "21.0.4.0",
+          "Leadtools.Ocr.OmniPageArabicEngine": "21.0.4.0",
+          "Leadtools.Ocr.OmniPageEngine": "21.0.4.0",
+          "Interop.NSOCRLib": "1.0.0.0"
         },
         "runtime": {
           "sc2-build-bot.dll": {}
@@ -35,6 +46,166 @@
         "dependencies": {
           "Microsoft.NETCore.Platforms": "3.1.0",
           "Microsoft.Win32.SystemEvents": "4.7.0"
+        }
+      },
+      "Leadtools.Codecs/21.0.4.0": {
+        "runtime": {
+          "Leadtools.Codecs.dll": {
+            "assemblyVersion": "21.0.4.0",
+            "fileVersion": "21.0.0.5"
+          }
+        }
+      },
+      "Leadtools.Codecs.Png/21.0.4.0": {
+        "runtime": {
+          "Leadtools.Codecs.Png.dll": {
+            "assemblyVersion": "21.0.4.0",
+            "fileVersion": "21.0.0.1"
+          }
+        }
+      },
+      "Leadtools.Codecs.Tif/21.0.4.0": {
+        "runtime": {
+          "Leadtools.Codecs.Tif.dll": {
+            "assemblyVersion": "21.0.4.0",
+            "fileVersion": "21.0.0.3"
+          }
+        }
+      },
+      "Leadtools.Codecs.Txt/21.0.4.0": {
+        "runtime": {
+          "Leadtools.Codecs.Txt.dll": {
+            "assemblyVersion": "21.0.4.0",
+            "fileVersion": "21.0.0.3"
+          }
+        }
+      },
+      "Leadtools/21.0.4.0": {
+        "runtime": {
+          "Leadtools.dll": {
+            "assemblyVersion": "21.0.4.0",
+            "fileVersion": "21.0.0.8"
+          }
+        }
+      },
+      "Leadtools.Document.Writer/21.0.4.0": {
+        "runtime": {
+          "Leadtools.Document.Writer.dll": {
+            "assemblyVersion": "21.0.4.0",
+            "fileVersion": "21.0.0.8"
+          }
+        }
+      },
+      "Leadtools.Ocr/21.0.4.0": {
+        "runtime": {
+          "Leadtools.Ocr.dll": {
+            "assemblyVersion": "21.0.4.0",
+            "fileVersion": "21.0.0.1"
+          }
+        }
+      },
+      "Leadtools.Ocr.LEADEngine/21.0.4.0": {
+        "runtime": {
+          "Leadtools.Ocr.LEADEngine.dll": {
+            "assemblyVersion": "21.0.4.0",
+            "fileVersion": "21.0.0.28"
+          }
+        }
+      },
+      "Leadtools.Ocr.OmniPageArabicEngine/21.0.4.0": {
+        "runtime": {
+          "Leadtools.Ocr.OmniPageArabicEngine.dll": {
+            "assemblyVersion": "21.0.4.0",
+            "fileVersion": "21.0.0.1"
+          }
+        }
+      },
+      "Leadtools.Ocr.OmniPageEngine/21.0.4.0": {
+        "runtime": {
+          "Leadtools.Ocr.OmniPageEngine.dll": {
+            "assemblyVersion": "21.0.4.0",
+            "fileVersion": "21.0.0.1"
+          }
+        }
+      },
+      "Interop.NSOCRLib/1.0.0.0": {
+        "runtime": {
+          "Interop.NSOCRLib.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Leadtools.Drawing/21.0.4.0": {
+        "runtime": {
+          "Leadtools.Drawing.dll": {
+            "assemblyVersion": "21.0.4.0",
+            "fileVersion": "21.0.0.5"
+          }
+        }
+      },
+      "Leadtools.ImageProcessing.Core/21.0.4.0": {
+        "runtime": {
+          "Leadtools.ImageProcessing.Core.dll": {
+            "assemblyVersion": "21.0.4.0",
+            "fileVersion": "21.0.0.3"
+          }
+        }
+      },
+      "Leadtools.ImageProcessing.Color/21.0.4.0": {
+        "runtime": {
+          "Leadtools.ImageProcessing.Color.dll": {
+            "assemblyVersion": "21.0.4.0",
+            "fileVersion": "21.0.0.1"
+          }
+        }
+      },
+      "Leadtools.Annotations.Engine/21.0.4.0": {
+        "runtime": {
+          "Leadtools.Annotations.Engine.dll": {
+            "assemblyVersion": "21.0.4.0",
+            "fileVersion": "21.0.0.2"
+          }
+        }
+      },
+      "Leadtools.ImageProcessing.Effects/21.0.4.0": {
+        "runtime": {
+          "Leadtools.ImageProcessing.Effects.dll": {
+            "assemblyVersion": "21.0.4.0",
+            "fileVersion": "21.0.0.2"
+          }
+        }
+      },
+      "Leadtools.Svg/21.0.4.0": {
+        "runtime": {
+          "Leadtools.Svg.dll": {
+            "assemblyVersion": "21.0.4.0",
+            "fileVersion": "21.0.0.14"
+          }
+        }
+      },
+      "Leadtools.ImageProcessing.Utilities/21.0.4.0": {
+        "runtime": {
+          "Leadtools.ImageProcessing.Utilities.dll": {
+            "assemblyVersion": "21.0.4.0",
+            "fileVersion": "21.0.0.1"
+          }
+        }
+      },
+      "Leadtools.Vector/21.0.4.0": {
+        "runtime": {
+          "Leadtools.Vector.dll": {
+            "assemblyVersion": "21.0.4.0",
+            "fileVersion": "21.0.0.1"
+          }
+        }
+      },
+      "Leadtools.ColorConversion/21.0.4.0": {
+        "runtime": {
+          "Leadtools.ColorConversion.dll": {
+            "assemblyVersion": "21.0.4.0",
+            "fileVersion": "21.0.0.1"
+          }
         }
       }
     }
@@ -72,6 +243,106 @@
       "sha512": "sha512-v+XbyYHaZjDfn0ENmJEV1VYLgGgCTx1gnfOBcppowbpOAriglYgGCvFCPr2EEZyBvXlpxbEsTwkOlInl107ahA==",
       "path": "system.drawing.common/4.7.0",
       "hashPath": "system.drawing.common.4.7.0.nupkg.sha512"
+    },
+    "Leadtools.Codecs/21.0.4.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Leadtools.Codecs.Png/21.0.4.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Leadtools.Codecs.Tif/21.0.4.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Leadtools.Codecs.Txt/21.0.4.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Leadtools/21.0.4.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Leadtools.Document.Writer/21.0.4.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Leadtools.Ocr/21.0.4.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Leadtools.Ocr.LEADEngine/21.0.4.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Leadtools.Ocr.OmniPageArabicEngine/21.0.4.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Leadtools.Ocr.OmniPageEngine/21.0.4.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Interop.NSOCRLib/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Leadtools.Drawing/21.0.4.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Leadtools.ImageProcessing.Core/21.0.4.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Leadtools.ImageProcessing.Color/21.0.4.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Leadtools.Annotations.Engine/21.0.4.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Leadtools.ImageProcessing.Effects/21.0.4.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Leadtools.Svg/21.0.4.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Leadtools.ImageProcessing.Utilities/21.0.4.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Leadtools.Vector/21.0.4.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Leadtools.ColorConversion/21.0.4.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

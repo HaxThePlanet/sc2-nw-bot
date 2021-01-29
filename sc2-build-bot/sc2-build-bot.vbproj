@@ -10,6 +10,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <COMReference Include="NSOCRLib.dll">
+      <VersionMinor>0</VersionMinor>
+      <VersionMajor>1</VersionMajor>
+      <Guid>17c8bc4c-3f13-4b36-9e05-20106ede6239</Guid>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>false</Isolated>
+    </COMReference>
+  </ItemGroup>
+
+  <ItemGroup>
     <Import Include="System.Data" />
     <Import Include="System.Drawing" />
     <Import Include="System.Windows.Forms" />
@@ -17,6 +28,39 @@
 
   <ItemGroup>
     <PackageReference Include="IronOcr" Version="2020.12.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Leadtools">
+      <HintPath>..\..\..\..\..\..\LEADTOOLS21\Bin\Dotnet4\x64\Leadtools.dll</HintPath>
+    </Reference>
+    <Reference Include="Leadtools.Codecs">
+      <HintPath>..\..\..\..\..\..\LEADTOOLS21\Bin\Dotnet4\x64\Leadtools.Codecs.dll</HintPath>
+    </Reference>
+    <Reference Include="Leadtools.Codecs.Png">
+      <HintPath>..\..\..\..\..\..\LEADTOOLS21\Bin\Dotnet4\x64\Leadtools.Codecs.Png.dll</HintPath>
+    </Reference>
+    <Reference Include="Leadtools.Codecs.Tif">
+      <HintPath>..\..\..\..\..\..\LEADTOOLS21\Bin\Dotnet4\x64\Leadtools.Codecs.Tif.dll</HintPath>
+    </Reference>
+    <Reference Include="Leadtools.Codecs.Txt">
+      <HintPath>..\..\..\..\..\..\LEADTOOLS21\Bin\Dotnet4\x64\Leadtools.Codecs.Txt.dll</HintPath>
+    </Reference>
+    <Reference Include="Leadtools.Document.Writer">
+      <HintPath>..\..\..\..\..\..\LEADTOOLS21\Bin\Dotnet4\x64\Leadtools.Document.Writer.dll</HintPath>
+    </Reference>
+    <Reference Include="Leadtools.Ocr">
+      <HintPath>..\..\..\..\..\..\LEADTOOLS21\Bin\Dotnet4\x64\Leadtools.Ocr.dll</HintPath>
+    </Reference>
+    <Reference Include="Leadtools.Ocr.LEADEngine">
+      <HintPath>..\..\..\..\..\..\LEADTOOLS21\Bin\Dotnet4\x64\Leadtools.Ocr.LEADEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="Leadtools.Ocr.OmniPageArabicEngine">
+      <HintPath>..\..\..\..\..\..\LEADTOOLS21\Bin\Dotnet4\x64\Leadtools.Ocr.OmniPageArabicEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="Leadtools.Ocr.OmniPageEngine">
+      <HintPath>..\..\..\..\..\..\LEADTOOLS21\Bin\Dotnet4\x64\Leadtools.Ocr.OmniPageEngine.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
